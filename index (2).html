@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sari-Sari Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── index-only overrides ── */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* hero banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #2e7d32 0%, #4CAF50 60%, #81c784 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 20px 50px;
+        }
+
+        .hero-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .hero-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 480px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        .hero-banner .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero-banner .btn-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
+        }
+
+        .btn-hero-primary {
+            background: #fff;
+            color: #2e7d32;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+        }
+
+        .btn-hero-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.7);
+        }
+
+        .btn-hero-outline:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-2px);
+        }
+
+        /* card section */
+        .cards-section {
+            background: #f4f4f9;
+            flex: 1;
+            padding: 50px 20px;
+        }
+
+        .cards-section h2 {
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 1.6rem;
+            color: #333;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .nav-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            padding: 28px 24px;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border-top: 4px solid #4CAF50;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.13);
+        }
+
+        .nav-card.blue  { border-top-color: #2196F3; }
+        .nav-card.orange{ border-top-color: #ff9800; }
+        .nav-card.red   { border-top-color: #e53935; }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 4px;
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #4CAF50;
+        }
+
+        .nav-card.blue  .card-tag { color: #2196F3; }
+        .nav-card.orange .card-tag { color: #f57c00; }
+        .nav-card.red   .card-tag { color: #e53935; }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.55;
+        }
+
+        /* info strip */
+        .info-strip {
+            background: #e8f5e9;
+            padding: 30px 20px;
+        }
+
+        .info-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .info-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .info-block .info-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .info-block h3 {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 4px;
+        }
+
+        .info-block p {
+            font-size: 0.83rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* footer */
+        .site-footer {
+            background: #2e7d32;
+            color: rgba(255,255,255,0.75);
+            text-align: center;
+            font-size: 0.8rem;
+            padding: 16px;
+            letter-spacing: 0.04em;
+        }
+
+        @media (max-width: 600px) {
+            .hero-banner h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero-banner">
+    <h1>🛒 Sari-Sari Store</h1>
+    <p>Your neighborhood store — browse current stock, place orders, and manage your inventory all in one place.</p>
+    <div class="hero-btns">
+        <a href="home.php" class="btn-hero btn-hero-primary">🏠 Visit Store</a>
+        <a href="login.php" class="btn-hero btn-hero-outline">🔒 Admin Login</a>
+    </div>
+</div>
+
+<!-- ── NAVIGATION CARDS ── -->
+<div class="cards-section">
+    <h2>Where would you like to go?</h2>
+    <div class="card-row">
+
+        <a href="home.php" class="nav-card">
+            <div class="card-icon">🏪</div>
+            <span class="card-tag">Public</span>
+            <div class="card-title">Browse Store</div>
+            <div class="card-desc">View current stock levels and explore what's available in the store today.</div>
+        </a>
+
+        <a href="order.php" class="nav-card orange">
+            <div class="card-icon">📋</div>
+            <span class="card-tag">Customers</span>
+            <div class="card-title">Place an Order</div>
+            <div class="card-desc">Select items and quantities to place a delivery or pickup order.</div>
+        </a>
+
+        <a href="employee_portal.php" class="nav-card blue">
+            <div class="card-icon">👤</div>
+            <span class="card-tag">Staff</span>
+            <div class="card-title">Employee Portal</div>
+            <div class="card-desc">View and manage orders assigned to you as a store employee.</div>
+        </a>
+
+        <a href="login.php" class="nav-card blue">
+            <div class="card-icon">📦</div>
+            <span class="card-tag">Admin</span>
+            <div class="card-title">Inventory Management</div>
+            <div class="card-desc">Manage stock, record sales, confirm orders, and register employees.</div>
+        </a>
+
+        <a href="create_account.php" class="nav-card red">
+            <div class="card-icon">✏️</div>
+            <span class="card-tag">New Admin</span>
+            <div class="card-title">Create Account</div>
+            <div class="card-desc">Register a new administrator account to manage the store system.</div>
+        </a>
+
+    </div>
+</div>
+
+<!-- ── INFO STRIP ── -->
+<div class="info-strip">
+    <div class="info-inner">
+        <div class="info-block">
+            <div class="info-icon">📊</div>
+            <div>
+                <h3>Live Inventory</h3>
+                <p>Stock levels are updated in real time whenever a sale is recorded.</p>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="info-icon">🚚</div>
+            <div>
+                <h3>Order Tracking</h3>
+                <p>Customers and employees can track pending and confirmed orders.</p>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="info-icon">🔐</div>
+            <div>
+                <h3>Secure Access</h3>
+                <p>Admin and employee areas are protected with separate login credentials.</p>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="info-icon">📞</div>
+            <div>
+                <h3>Contact Us</h3>
+                <p>sari-sari@example.com &nbsp;|&nbsp; +63 912 345 6789</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="site-footer">
+    &copy; <script>document.write(new Date().getFullYear())</script> Sari-Sari Store &nbsp;·&nbsp; All rights reserved
+</div>
+
+</body>
+</html>
